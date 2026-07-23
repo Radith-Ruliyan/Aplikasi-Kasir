@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="Aplikasi kasir sederhana untuk warung Nasi Goreng Ambyar. Bisa offline, cepat, dan mudah digunakan.">
+  <meta name="theme-color" content="#e85d2c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Kasir Ambyar">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-96.png">
+  <title>Kasir - Nasi Goreng Ambyar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================ HEADER ============================ -->
+<header class="app-header">
+  <div>
+    <h1>🍛 Nasi Goreng Ambyar</h1>
+    <div class="sub">Aplikasi Kasir Sederhana</div>
+  </div>
+  <div class="clock-box">
+    <div class="date" id="headerDate">-</div>
+    <div class="time" id="headerTime">-</div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ============================ KOLOM KIRI: MENU ============================ -->
+  <div class="col-left">
+
+    <div class="card">
+      <h2>🔍 Cari & Pilih Menu</h2>
+      <div class="search-wrap">
+        <span class="icon">🔎</span>
+        <input type="text" id="searchInput" placeholder="Ketik nama menu, lalu Enter untuk tambah cepat..." autocomplete="off">
+      </div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+
+    <div class="card">
+      <h2>➕ Tambah Item Manual</h2>
+      <div class="manual-form">
+        <div class="field">
+          <label for="manualNama">Nama Item</label>
+          <input type="text" id="manualNama" placeholder="Contoh: Kerupuk, Biaya Antar...">
+        </div>
+        <div class="field" style="max-width:150px;">
+          <label for="manualHarga">Harga (Rp)</label>
+          <input type="number" id="manualHarga" placeholder="0" min="0">
+        </div>
+        <button class="btn-manual" id="btnTambahManual">Tambah Item Manual</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================ KOLOM KANAN: KERANJANG ============================ -->
+  <div class="col-right">
+    <div class="card">
+      <h2>🛒 Keranjang</h2>
+      <div class="cart-list" id="cartList">
+        <div class="cart-empty">Keranjang masih kosong.<br>Pilih menu di sebelah kiri.</div>
+      </div>
+
+      <div class="summary-row">
+        <span>Jumlah Item</span>
+        <span id="totalQty">0</span>
+      </div>
+      <div class="summary-row total">
+        <span>Total Bayar</span>
+        <span id="totalHarga">Rp0</span>
+      </div>
+
+      <div class="pay-section">
+        <label for="bayarInput">💰 Uang Diterima</label>
+        <input type="number" id="bayarInput" placeholder="0" min="0">
+        <div class="quick-cash">
+          <button data-add="10000">+10rb</button>
+          <button data-add="20000">+20rb</button>
+          <button data-add="50000">+50rb</button>
+        </div>
+        <button class="btn-bayar-pas" id="btnBayarPas">💵 Bayar Pas (Tanpa Kembalian)</button>
+      </div>
+
+      <div class="kembalian-box" id="kembalianBox">
+        <div class="label">Kembalian</div>
+        <div class="nilai" id="kembalianNilai">Rp0</div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-main btn-reset" id="btnReset">🗑️ Reset</button>
+        <button class="btn-main btn-bayar" id="btnBayar" disabled>✅ Proses Bayar</button>
+      </div>
+
+      <div class="hint">
+        <kbd>Enter</kbd> tambah item pertama hasil cari &nbsp;|&nbsp;
+        <kbd>+</kbd>/<kbd>-</kbd> ubah qty item terakhir &nbsp;|&nbsp;
+        <kbd>Ctrl</kbd>+<kbd>Enter</kbd> proses bayar
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================ TOAST CONTAINER ============================ -->
+<div id="toastWrap"></div>
+
+<!-- ============================ MODAL STRUK ============================ -->
+<div class="modal-overlay" id="receiptOverlay">
+  <div class="receipt-box" id="receiptBox">
+    <!-- diisi via JS -->
+  </div>
+</div>
+
+<!-- ============================ MODAL PILIH LEVEL PEDAS ============================ -->
+<div class="modal-overlay" id="spicyOverlay">
+  <div class="spicy-modal-box" id="spicyModalBox">
+    <!-- diisi via JS -->
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="80" fill="#e85d2c"/>
+  <text x="256" y="200" text-anchor="middle" font-size="160" fill="white">🍛</text>
+  <text x="256" y="340" text-anchor="middle" font-size="72" font-weight="800" font-family="Arial, sans-serif" fill="white">KASIR</text>
+  <text x="256" y="420" text-anchor="middle" font-size="36" font-weight="600" font-family="Arial, sans-serif" fill="rgba(255,255,255,0.85)">AMBYAR</text>
+</svg>
