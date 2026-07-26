@@ -1321,3 +1321,63 @@ button {
     display: none;
   }
 }
+
+/* ===========================================================
+   PRINT STYLES: thermal receipt printing optimizations
+=========================================================== */
+@media print {
+  @page {
+    size: 58mm auto; /* Default 58mm size; overwritten dynamically in JS for 80mm */
+    margin: 0;
+  }
+  
+  html, body {
+    width: 58mm;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #000;
+  }
+  
+  body * {
+    visibility: hidden;
+  }
+  
+  #receiptOverlay, #receiptOverlay *, .receipt-box, .receipt-box * {
+    visibility: visible;
+  }
+  
+  #receiptOverlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    display: flex !important;
+    padding: 0;
+    backdrop-filter: none;
+  }
+  
+  .receipt-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    max-height: none !important;
+    padding: 4mm 3mm !important;
+    font-size: 11px !important;
+    overflow: visible !important;
+  }
+  
+  /* Hide interactive buttons and controls from the final printout */
+  .receipt-actions, 
+  .paper-width-toggle,
+  .receipt-actions button {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
