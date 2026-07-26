@@ -372,8 +372,23 @@ function getTotalHarga() {
 
 function updateSummary() {
   const total = getTotalHarga();
-  document.getElementById('totalQty').textContent = getTotalQty();
+  const qty = getTotalQty();
+  
+  document.getElementById('totalQty').textContent = qty;
   document.getElementById('totalHarga').textContent = formatRupiah(total);
+  
+  // Update mobile bottom cart bar status
+  const mobileBar = document.getElementById('mobileCartBar');
+  if (mobileBar) {
+    if (qty > 0) {
+      mobileBar.classList.add('show');
+      document.getElementById('mobileCartQty').textContent = qty + ' Item';
+      document.getElementById('mobileCartTotal').textContent = formatRupiah(total);
+    } else {
+      mobileBar.classList.remove('show');
+    }
+  }
+  
   updateKembalian();
 
   // tombol bayar aktif hanya jika ada item di keranjang
@@ -728,6 +743,17 @@ function init() {
   renderMenu();
   renderCart();
   updateKembalian();
+
+  // Scroll to checkout on mobile bottom bar click
+  const mobileCartBtn = document.getElementById('mobileCartBtn');
+  if (mobileCartBtn) {
+    mobileCartBtn.addEventListener('click', () => {
+      const checkoutCard = document.querySelector('.col-right');
+      if (checkoutCard) {
+        checkoutCard.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
 
   // Registrasi Service Worker untuk PWA offline
   if ('serviceWorker' in navigator) {

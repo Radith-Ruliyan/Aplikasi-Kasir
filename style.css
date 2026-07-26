@@ -303,6 +303,8 @@ button {
   overflow-x: auto;
   padding-bottom: 10px;
   scrollbar-width: thin;
+  width: 100%;
+  max-width: 100%;
 }
 
 .category-tabs::-webkit-scrollbar {
@@ -1106,12 +1108,6 @@ button {
    TAHAP 2: RESPONSIF MOBILE (HP)
 =========================================================== */
 
-@media (max-width: 880px) {
-  .layout {
-    flex-direction: column;
-    padding: 0 16px 40px 16px;
-  }
-  
   .col-right {
     min-width: 0;
     width: 100%;
@@ -1119,40 +1115,192 @@ button {
   }
 }
 
+/* ===========================================================
+   MOBILE BOTTOM CART BAR
+=========================================================== */
+.mobile-cart-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0f172a;
+  color: #fff;
+  padding: 16px 24px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -10px 25px -5px rgba(15, 23, 42, 0.3);
+  z-index: 99;
+  border-top: 1px solid #1e293b;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-cart-bar.show {
+  display: flex;
+  transform: translateY(0);
+}
+
+.mobile-cart-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.mobile-cart-qty {
+  font-weight: 700;
+  color: var(--primary-light);
+  background: rgba(255, 94, 54, 0.2);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.mobile-cart-divider {
+  color: #334155;
+}
+
+.mobile-cart-total {
+  font-weight: 800;
+  font-size: 16px;
+  color: #fff;
+}
+
+.mobile-cart-btn {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 30px;
+}
+
+.mobile-cart-btn:hover {
+  background: var(--primary-dark);
+}
+
+@media (max-width: 880px) {
+  .layout {
+    flex-direction: column;
+    padding: 0 16px 100px 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .col-left {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  
+  .col-right {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    position: static;
+  }
+}
+
 @media (max-width: 600px) {
   html, body {
     font-size: 14px;
+    overflow-x: hidden; /* Prevent horizontal scroll globally */
   }
 
   .pos-top-nav {
-    padding: 10px 16px;
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .nav-system-status {
+    width: 100%;
+    justify-content: space-between;
+    font-size: 11px;
+  }
+
+  .pos-top-nav .divider {
+    display: none; /* Hide divider when stacked */
   }
 
   .app-header {
     padding: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .clock-box {
+    text-align: left;
+    margin-top: 4px;
   }
 
   .app-header h1 {
     font-size: 18px;
   }
 
+  .card {
+    padding: 16px; /* Reduced card padding on mobile to save space */
+    margin-bottom: 16px;
+    border-radius: var(--radius);
+    max-width: 100%;
+    overflow: hidden; /* Prevent scrollbar stretching */
+  }
+
+  .card h2 {
+    font-size: 16px;
+  }
+
   .menu-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    width: 100%;
   }
 
   .menu-item {
-    padding: 14px;
+    padding: 12px;
     min-height: 100px;
+    gap: 8px;
   }
 
   .menu-item .nama {
-    font-size: 13.5px;
+    font-size: 13px;
+    line-height: 1.4;
   }
 
   .menu-item .harga {
-    font-size: 14.5px;
+    font-size: 14px;
+  }
+
+  /* Stack manual form fields to prevent stretching layout */
+  .manual-form {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .manual-form .field {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .btn-manual {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  /* Make checkout widgets fit nicely */
+  .quick-cash {
+    gap: 6px;
+  }
+
+  .quick-cash button {
+    padding: 10px 4px;
+    font-size: 12px;
   }
 
   .qty-ctrl button {
