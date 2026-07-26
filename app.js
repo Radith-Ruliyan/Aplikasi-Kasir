@@ -18,45 +18,48 @@ const MENU = [
   { id: 'm2',  nama: 'Nasi Goreng Sosis',          harga: 16000, pedas: true },
   { id: 'm3',  nama: 'Nasi Goreng Bakso',          harga: 16000, pedas: true },
   { id: 'm4',  nama: 'Nasi Goreng Ati Ampela',     harga: 17000, pedas: true },
-  { id: 'm5',  nama: 'Nasi Goreng Spesial',        harga: 25000, pedas: true },
-  { id: 'm6',  nama: 'Nasi Goreng Pete',           harga: 19000, pedas: true },
-  { id: 'm7',  nama: 'Mie Goreng Ayam',            harga: 16000, pedas: true },
-  { id: 'm8',  nama: 'Mie Goreng Sosis',           harga: 17000, pedas: true },
-  { id: 'm9',  nama: 'Mie Goreng Bakso',           harga: 17000, pedas: true },
-  { id: 'm10', nama: 'Mie Goreng Ati Ampela',      harga: 18000, pedas: true },
-  { id: 'm11', nama: 'Mie Goreng Spesial',         harga: 26000, pedas: true },
-  { id: 'm12', nama: 'Bihun Goreng Ayam',          harga: 16000, pedas: true },
-  { id: 'm13', nama: 'Bihun Goreng Sosis',         harga: 17000, pedas: true },
-  { id: 'm14', nama: 'Bihun Goreng Bakso',         harga: 17000, pedas: true },
-  { id: 'm15', nama: 'Bihun Goreng Ati Ampela',    harga: 18000, pedas: true },
-  { id: 'm16', nama: 'Bihun Goreng Spesial',       harga: 26000, pedas: true },
-  { id: 'm17', nama: 'Mie Rebus Ayam',             harga: 16000, pedas: true },
-  { id: 'm18', nama: 'Mie Rebus Sosis',            harga: 17000, pedas: true },
-  { id: 'm19', nama: 'Mie Rebus Bakso',            harga: 17000, pedas: true },
-  { id: 'm20', nama: 'Mie Rebus Ati Ampela',       harga: 18000, pedas: true },
-  { id: 'm21', nama: 'Mie Rebus Spesial',          harga: 26000, pedas: true },
-  { id: 'm22', nama: 'Kwetiau Goreng Ayam',        harga: 16000, pedas: true },
-  { id: 'm23', nama: 'Kwetiau Goreng Sosis',       harga: 17000, pedas: true },
-  { id: 'm24', nama: 'Kwetiau Goreng Bakso',       harga: 17000, pedas: true },
-  { id: 'm25', nama: 'Kwetiau Goreng Ati Ampela',  harga: 18000, pedas: true },
-  { id: 'm26', nama: 'Kwetiau Goreng Spesial',     harga: 26000, pedas: true },
-  { id: 'm27', nama: 'Kwetiau Rebus Ayam',         harga: 16000, pedas: true },
-  { id: 'm28', nama: 'Kwetiau Rebus Sosis',        harga: 17000, pedas: true },
-  { id: 'm29', nama: 'Kwetiau Rebus Bakso',        harga: 17000, pedas: true },
-  { id: 'm30', nama: 'Kwetiau Rebus Ati Ampela',   harga: 18000, pedas: true },
-  { id: 'm31', nama: 'Indomie Goreng',             harga: 10000, pedas: false },
-  { id: 'm32', nama: 'Indomie Goreng Aceh',        harga: 10000, pedas: false },
-  { id: 'm33', nama: 'Indomie Goreng Rendang',     harga: 10000, pedas: false },
-  { id: 'm34', nama: 'Indomie Rebus Seblak',       harga: 10000, pedas: false },
-  { id: 'm35', nama: 'Indomie Rebus Soto',         harga: 10000, pedas: false },
-  { id: 'm36', nama: 'Indomie Rebus Ayam Bawang',  harga: 10000, pedas: false },
-  { id: 'm37', nama: 'Tambahan Bakso',             harga: 1000,  pedas: false },
-  { id: 'm38', nama: 'Tambahan Sosis',             harga: 1000,  pedas: false },
-  { id: 'm39', nama: 'Tambahan Telur',             harga: 5000,  pedas: false },
+  { id: 'm5',  nama: 'Nasi Goreng Merah',          harga: 15000, pedas: true },
+  { id: 'm6',  nama: 'Nasi Goreng Selimut',        harga: 18000, pedas: true },
+  { id: 'm7',  nama: 'Nasi Goreng Spesial',        harga: 25000, pedas: true },
+  { id: 'm8',  nama: 'Nasi Goreng Pete',           harga: 19000, pedas: true },
+  { id: 'm9',  nama: 'Mie Goreng Ayam',            harga: 16000, pedas: true },
+  { id: 'm10', nama: 'Mie Goreng Sosis',           harga: 17000, pedas: true },
+  { id: 'm11', nama: 'Mie Goreng Bakso',           harga: 17000, pedas: true },
+  { id: 'm12', nama: 'Mie Goreng Ati Ampela',      harga: 18000, pedas: true },
+  { id: 'm13', nama: 'Mie Goreng Spesial',         harga: 26000, pedas: true },
+  { id: 'm14', nama: 'Bihun Goreng Ayam',          harga: 16000, pedas: true },
+  { id: 'm15', nama: 'Bihun Goreng Sosis',         harga: 17000, pedas: true },
+  { id: 'm16', nama: 'Bihun Goreng Bakso',         harga: 17000, pedas: true },
+  { id: 'm17', nama: 'Bihun Goreng Ati Ampela',    harga: 18000, pedas: true },
+  { id: 'm18', nama: 'Bihun Goreng Spesial',       harga: 26000, pedas: true },
+  { id: 'm19', nama: 'Mie Rebus Ayam',             harga: 16000, pedas: true },
+  { id: 'm20', nama: 'Mie Rebus Sosis',            harga: 17000, pedas: true },
+  { id: 'm21', nama: 'Mie Rebus Bakso',            harga: 17000, pedas: true },
+  { id: 'm22', nama: 'Mie Rebus Ati Ampela',       harga: 18000, pedas: true },
+  { id: 'm23', nama: 'Mie Rebus Spesial',          harga: 26000, pedas: true },
+  { id: 'm24', nama: 'Kwetiau Goreng Ayam',        harga: 16000, pedas: true },
+  { id: 'm25', nama: 'Kwetiau Goreng Sosis',       harga: 17000, pedas: true },
+  { id: 'm26', nama: 'Kwetiau Goreng Bakso',       harga: 17000, pedas: true },
+  { id: 'm27', nama: 'Kwetiau Goreng Ati Ampela',  harga: 18000, pedas: true },
+  { id: 'm28', nama: 'Kwetiau Goreng Spesial',     harga: 26000, pedas: true },
+  { id: 'm29', nama: 'Kwetiau Rebus Ayam',         harga: 16000, pedas: true },
+  { id: 'm30', nama: 'Kwetiau Rebus Sosis',        harga: 17000, pedas: true },
+  { id: 'm31', nama: 'Kwetiau Rebus Bakso',        harga: 17000, pedas: true },
+  { id: 'm32', nama: 'Kwetiau Rebus Ati Ampela',   harga: 18000, pedas: true },
+  { id: 'm33', nama: 'Indomie Goreng',             harga: 10000, pedas: false },
+  { id: 'm34', nama: 'Indomie Goreng Aceh',        harga: 10000, pedas: false },
+  { id: 'm35', nama: 'Indomie Goreng Rendang',     harga: 10000, pedas: false },
+  { id: 'm36', nama: 'Indomie Rebus Seblak',       harga: 10000, pedas: false },
+  { id: 'm37', nama: 'Indomie Rebus Soto',         harga: 10000, pedas: false },
+  { id: 'm38', nama: 'Indomie Rebus Ayam Bawang',  harga: 10000, pedas: false },
+  { id: 'm39', nama: 'Tambahan Bakso',             harga: 1000,  pedas: false },
+  { id: 'm40', nama: 'Tambahan Sosis',             harga: 1000,  pedas: false },
+  { id: 'm41', nama: 'Tambahan Telur',             harga: 5000,  pedas: false },
 ];
 
 // Keranjang: array of { id, nama, harga, qty, manual: true/false, pedas: 'tidak'|'sedikit'|'sedang'|'pedas'|null }
 let cart = [];
+let currentCategory = 'all';
 
 // localStorage key
 const STORAGE_KEY = 'kasir_ambyar_cart';
@@ -75,7 +78,7 @@ function getLevelLabel(key) {
 }
 
 /* =================================================================
-   UTIL: TOAST NOTIFICATION (pengganti alert bawaan browser)
+   UTIL: TOAST NOTIFICATION
 ================================================================= */
 function showToast(message, type = 'info') {
   const wrap = document.getElementById('toastWrap');
@@ -87,7 +90,6 @@ function showToast(message, type = 'info') {
   // trigger animasi masuk
   requestAnimationFrame(() => toast.classList.add('show'));
 
-  // pesan panjang (mis. instruksi langkah-langkah) ditampilkan lebih lama agar terbaca
   const durasi = message.length > 50 ? 4000 : 2200;
 
   setTimeout(() => {
@@ -103,11 +105,9 @@ const HARI = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 const BULAN = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 
 function formatTanggalLengkap(d) {
-  // Contoh: Kamis, 25 Juni 2026
   return `${HARI[d.getDay()]}, ${d.getDate()} ${BULAN[d.getMonth()]} ${d.getFullYear()}`;
 }
 function formatTanggalSingkat(d) {
-  // Contoh: 25 Juni 2026
   return `${d.getDate()} ${BULAN[d.getMonth()]} ${d.getFullYear()}`;
 }
 function formatWaktu(d) {
@@ -122,18 +122,37 @@ function updateClock() {
   document.getElementById('headerTime').textContent = formatWaktu(now);
 }
 updateClock();
-setInterval(updateClock, 1000 * 10); // update tiap 10 detik, cukup untuk jam:menit
+setInterval(updateClock, 1000 * 10); // update tiap 10 detik
 
 /* =================================================================
-   RENDER MENU (dengan dukungan pencarian)
+   RENDER MENU & KATEGORI
 ================================================================= */
+function getCategory(item) {
+  const name = item.nama.toLowerCase();
+  if (name.includes('nasi goreng')) return 'nasgor';
+  if (name.includes('mie goreng') || name.includes('mie rebus')) {
+    if (name.includes('indomie')) return 'indomie';
+    return 'mie';
+  }
+  if (name.includes('bihun')) return 'bihun';
+  if (name.includes('kwetiau')) return 'kwetiau';
+  if (name.includes('indomie')) return 'indomie';
+  if (name.includes('tambahan')) return 'tambahan';
+  return 'lainnya';
+}
+
 function renderMenu(filter = '') {
   const grid = document.getElementById('menuGrid');
   const keyword = filter.trim().toLowerCase();
-  const filtered = MENU.filter(m => m.nama.toLowerCase().includes(keyword));
+  
+  const filtered = MENU.filter(m => {
+    const matchesSearch = m.nama.toLowerCase().includes(keyword);
+    const matchesCategory = currentCategory === 'all' || getCategory(m) === currentCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   if (filtered.length === 0) {
-    grid.innerHTML = `<div class="menu-empty">Menu "${escapeHtml(filter)}" tidak ditemukan.<br>Gunakan form "Tambah Item Manual" di bawah jika ini item baru.</div>`;
+    grid.innerHTML = `<div class="menu-empty">Item tidak ditemukan.<br>Silakan tambah manual atau ubah kata kunci pencarian.</div>`;
     return;
   }
 
@@ -141,7 +160,7 @@ function renderMenu(filter = '') {
     <button class="menu-item" data-id="${m.id}">
       <span class="nama">${escapeHtml(m.nama)}</span>
       <span class="harga">${formatRupiah(m.harga)}</span>
-      ${m.pedas ? `<span class="pedas-tag">🌶️ Pilih level pedas</span>` : ''}
+      ${m.pedas ? `<span class="pedas-tag">🌶️ Level pedas</span>` : ''}
     </button>
   `).join('');
 
@@ -158,11 +177,26 @@ function renderMenu(filter = '') {
   });
 }
 
+function initCategoryTabs() {
+  const tabs = document.querySelectorAll('#categoryTabs .tab-btn');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentCategory = tab.dataset.category;
+      
+      const searchVal = document.getElementById('searchInput').value;
+      renderMenu(searchVal);
+    });
+  });
+}
+
 function escapeHtml(str) {
   const div = document.createElement('div');
   div.textContent = str;
   return div.innerHTML;
 }
+
 
 /* =================================================================
    MODAL PILIH LEVEL PEDAS
@@ -690,6 +724,7 @@ function loadCart() {
 ================================================================= */
 function init() {
   loadCart();
+  initCategoryTabs();
   renderMenu();
   renderCart();
   updateKembalian();

@@ -3,25 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <meta name="description" content="Aplikasi kasir sederhana untuk warung Nasi Goreng Ambyar. Bisa offline, cepat, dan mudah digunakan.">
-  <meta name="theme-color" content="#e85d2c">
+  <meta name="description" content="Sistem Point of Sales (POS) Nasi Goreng Ambyar - Dirancang untuk efisiensi kasir, pencetakan struk cepat, dan manajemen transaksi realtime.">
+  <meta name="theme-color" content="#FF5E36">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Kasir Ambyar">
+  <meta name="apple-mobile-web-app-title" content="Ambyar POS">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-96.png">
-  <title>Kasir - Nasi Goreng Ambyar</title>
+  <title>Terminal Kasir - Nasi Goreng Ambyar</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- ============================ NAVIGATION SYSTEM ============================ -->
+<div class="pos-top-nav">
+  <div class="nav-brand-section">
+    <img src="icons/logo.jpg" alt="Ambyar Logo" class="brand-logo-img">
+    <div class="brand-text">
+      <span class="brand-title">Ambyar POS</span>
+      <span class="brand-tag">v2.1.0-Release</span>
+    </div>
+  </div>
+  
+  <div class="nav-system-status">
+    <div class="status-indicator">
+      <span class="status-pulse"></span>
+      <span class="status-text">Terminal Aktif</span>
+    </div>
+    <div class="divider"></div>
+    <div class="operator-meta">
+      <span class="meta-label">Kasir:</span>
+      <span class="meta-val">Ahmad Pratama</span>
+    </div>
+  </div>
+</div>
+
 <!-- ============================ HEADER ============================ -->
 <header class="app-header">
-  <div>
-    <h1>🍛 Nasi Goreng Ambyar</h1>
-    <div class="sub">Aplikasi Kasir Sederhana</div>
+  <div class="header-left">
+    <h1>Restoran Nasi Goreng Ambyar</h1>
+    <div class="sub">Manajemen Pesanan dan Pembayaran POS</div>
   </div>
   <div class="clock-box">
     <div class="date" id="headerDate">-</div>
@@ -35,26 +64,45 @@
   <div class="col-left">
 
     <div class="card">
-      <h2>🔍 Cari & Pilih Menu</h2>
-      <div class="search-wrap">
-        <span class="icon">🔎</span>
-        <input type="text" id="searchInput" placeholder="Ketik nama menu, lalu Enter untuk tambah cepat..." autocomplete="off">
+      <div class="card-header">
+        <div class="header-title-wrap">
+          <h2>Menu Penjualan</h2>
+          <span class="menu-count">39 Produk Terdaftar</span>
+        </div>
       </div>
+      
+      <!-- Filter Kategori Dinamis (Human-built look) -->
+      <div class="category-tabs" id="categoryTabs">
+        <button class="tab-btn active" data-category="all">Semua Menu</button>
+        <button class="tab-btn" data-category="nasgor">Nasi Goreng</button>
+        <button class="tab-btn" data-category="mie">Mie</button>
+        <button class="tab-btn" data-category="bihun">Bihun</button>
+        <button class="tab-btn" data-category="kwetiau">Kwetiau</button>
+        <button class="tab-btn" data-category="indomie">Indomie</button>
+        <button class="tab-btn" data-category="tambahan">Ekstra</button>
+      </div>
+
+      <div class="search-wrap">
+        <span class="icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Cari nama menu atau tekan Enter untuk input cepat..." autocomplete="off">
+      </div>
+      
       <div class="menu-grid" id="menuGrid"></div>
     </div>
 
     <div class="card">
-      <h2>➕ Tambah Item Manual</h2>
+      <h2>Item Kustom</h2>
+      <p class="section-desc">Gunakan form ini untuk biaya tambahan, jasa antar, atau pesanan khusus di luar menu utama.</p>
       <div class="manual-form">
         <div class="field">
-          <label for="manualNama">Nama Item</label>
-          <input type="text" id="manualNama" placeholder="Contoh: Kerupuk, Biaya Antar...">
+          <label for="manualNama">Deskripsi Item</label>
+          <input type="text" id="manualNama" placeholder="Contoh: Kerupuk Kaleng Ekstra, Ongkos Kirim...">
         </div>
-        <div class="field" style="max-width:150px;">
-          <label for="manualHarga">Harga (Rp)</label>
+        <div class="field" style="max-width:180px;">
+          <label for="manualHarga">Nominal (Rp)</label>
           <input type="number" id="manualHarga" placeholder="0" min="0">
         </div>
-        <button class="btn-manual" id="btnTambahManual">Tambah Item Manual</button>
+        <button class="btn-manual" id="btnTambahManual">Tambahkan Item</button>
       </div>
     </div>
 
@@ -62,46 +110,62 @@
 
   <!-- ============================ KOLOM KANAN: KERANJANG ============================ -->
   <div class="col-right">
-    <div class="card">
-      <h2>🛒 Keranjang</h2>
+    <div class="card card-checkout">
+      <div class="card-header checkout-header">
+        <h2>Detail Transaksi</h2>
+        <span class="live-tag">LIVE BILL</span>
+      </div>
+      
       <div class="cart-list" id="cartList">
-        <div class="cart-empty">Keranjang masih kosong.<br>Pilih menu di sebelah kiri.</div>
+        <div class="cart-empty">
+          <div class="empty-icon">🧾</div>
+          Keranjang belanja kosong.<br>Pilih produk dari menu untuk memulai transaksi.
+        </div>
       </div>
 
-      <div class="summary-row">
-        <span>Jumlah Item</span>
-        <span id="totalQty">0</span>
-      </div>
-      <div class="summary-row total">
-        <span>Total Bayar</span>
-        <span id="totalHarga">Rp0</span>
+      <div class="summary-section">
+        <div class="summary-row">
+          <span>Jumlah Kuantitas</span>
+          <span id="totalQty" class="summary-val">0</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total Tagihan</span>
+          <span id="totalHarga" class="summary-val font-accent">Rp0</span>
+        </div>
       </div>
 
       <div class="pay-section">
-        <label for="bayarInput">💰 Uang Diterima</label>
-        <input type="number" id="bayarInput" placeholder="0" min="0">
-        <div class="quick-cash">
-          <button data-add="10000">+10rb</button>
-          <button data-add="20000">+20rb</button>
-          <button data-add="50000">+50rb</button>
+        <label for="bayarInput">Nominal Pembayaran (Tunai)</label>
+        <div class="payment-input-wrapper">
+          <span class="rp-prefix">Rp</span>
+          <input type="number" id="bayarInput" placeholder="0" min="0">
         </div>
-        <button class="btn-bayar-pas" id="btnBayarPas">💵 Bayar Pas (Tanpa Kembalian)</button>
+        
+        <div class="quick-cash">
+          <button data-add="10000">+10k</button>
+          <button data-add="20000">+20k</button>
+          <button data-add="50000">+50k</button>
+        </div>
+        <button class="btn-bayar-pas" id="btnBayarPas">Bayar Pas (Tanpa Kembalian)</button>
       </div>
 
       <div class="kembalian-box" id="kembalianBox">
-        <div class="label">Kembalian</div>
+        <div class="label">Kembalian Pelanggan</div>
         <div class="nilai" id="kembalianNilai">Rp0</div>
       </div>
 
       <div class="action-buttons">
-        <button class="btn-main btn-reset" id="btnReset">🗑️ Reset</button>
-        <button class="btn-main btn-bayar" id="btnBayar" disabled>✅ Proses Bayar</button>
+        <button class="btn-main btn-reset" id="btnReset">Batal</button>
+        <button class="btn-main btn-bayar" id="btnBayar" disabled>Proses Transaksi</button>
       </div>
 
       <div class="hint">
-        <kbd>Enter</kbd> tambah item pertama hasil cari &nbsp;|&nbsp;
-        <kbd>+</kbd>/<kbd>-</kbd> ubah qty item terakhir &nbsp;|&nbsp;
-        <kbd>Ctrl</kbd>+<kbd>Enter</kbd> proses bayar
+        <span class="hint-title">Pintasan Keyboard Terminal</span>
+        <div class="hint-shortcuts">
+          <div><kbd>Enter</kbd> Tambah Item Pencarian Teratas</div>
+          <div><kbd>+</kbd>/<kbd>-</kbd> Ubah Kuantitas Baris Terakhir</div>
+          <div><kbd>Ctrl</kbd>+<kbd>Enter</kbd> Selesaikan Transaksi</div>
+        </div>
       </div>
     </div>
   </div>
