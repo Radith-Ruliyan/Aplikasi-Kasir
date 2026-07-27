@@ -55,6 +55,7 @@ const MENU = [
   { id: 'm39', nama: 'Tambahan Bakso',             harga: 1000,  pedas: false },
   { id: 'm40', nama: 'Tambahan Sosis',             harga: 1000,  pedas: false },
   { id: 'm41', nama: 'Tambahan Telur',             harga: 5000,  pedas: false },
+  { id: 'm42', nama: 'Tambahan Pete',              harga: 5000,  pedas: false },
 ];
 
 // Keranjang: array of { id, nama, harga, qty, manual: true/false, pedas: 'tidak'|'sedikit'|'sedang'|'pedas'|null }
